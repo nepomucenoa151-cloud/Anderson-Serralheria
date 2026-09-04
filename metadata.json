@@ -1,0 +1,6 @@
+{
+  "name": "Serralharia Lucrativa",
+  "description": "Landing page de alta conversão para o Pack Serralharia Lucrativa 2.0 com projetos em PDF/CAD, planilhas de orçamentos e bônus exclusivos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
