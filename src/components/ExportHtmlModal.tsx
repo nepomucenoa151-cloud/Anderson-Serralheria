@@ -235,22 +235,77 @@ export const ExportHtmlModal: React.FC<ExportHtmlModalProps> = ({ isOpen, onClos
 
     /* Pricing Section */
     .section-pricing { background-color: #0b1120; padding: 60px 20px; border-top: 1px solid #1e293b; }
+    .pricing-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+    @media (min-width: 860px) {
+      .pricing-container {
+        grid-template-columns: 1fr 1.3fr;
+      }
+    }
+    .pricing-box-basic {
+      background-color: #172033;
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
     .pricing-box {
       background-color: #1e293b;
       border: 2px solid #d97706;
       border-radius: 20px;
       padding: 30px 20px;
-      max-width: 550px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       text-align: center;
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .pricing-badge-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(90deg, #d97706, #f59e0b);
+      color: #000;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 6px 14px;
+      border-bottom-left-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .old-price { font-size: 14px; color: #94a3b8; text-decoration: line-through; }
     .new-price { font-size: 48px; font-weight: 900; color: #22c55e; margin: 5px 0; }
+    .new-price-basic { font-size: 38px; font-weight: 900; color: #22c55e; margin: 5px 0; }
     .installments { font-size: 15px; color: #f59e0b; font-weight: 700; margin-bottom: 20px; }
     .pricing-list { text-align: left; list-style: none; font-size: 14px; color: #e2e8f0; margin-bottom: 25px; padding: 0 10px; }
     .pricing-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
     .pricing-list li::before { content: "✔"; color: #22c55e; font-weight: 900; }
+    .cta-btn-basic {
+      display: block;
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid #475569;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+    .cta-btn-basic:hover { background: #475569; border-color: #22c55e; }
 
     /* Guarantee Section */
     .section-guarantee { padding: 50px 20px; max-width: 750px; margin: 0 auto; }
@@ -504,41 +559,109 @@ export const ExportHtmlModal: React.FC<ExportHtmlModalProps> = ({ isOpen, onClos
 
   <!-- 5. Seção de Oferta e Preço -->
   <section id="oferta" class="section-pricing">
-    <div class="pricing-box">
-      <div style="font-size: 12px; font-weight: 800; color: #d97706; text-transform: uppercase;">Acesso Completo e Vitalício</div>
-      <h3 style="font-size: 26px; font-weight: 900; margin-bottom: 12px;">Pack Serralharia Lucrativa 2.0</h3>
-      
-      <div class="old-price">De R$ 197,00</div>
-      <div style="font-size: 14px; color: #cbd5e1;">Por apenas</div>
-      <div class="new-price">R$ 47,00</div>
-      <div class="installments">ou em até 5x no cartão</div>
-
-      <ul class="pricing-list">
-        <li><strong>+3000 Projetos Detalhados</strong> (PDF e CAD DWG)</li>
-        <li>600 projetos de móveis industriais</li>
-        <li>500 projetos de Estruturas rápidas</li>
-        <li>50 projetos de churrasqueiras</li>
-        <li>100 projetos de aparelho de academia (entre outros …)</li>
-        <li>Detalhamento de Medidas e Espessuras de Tubos e Perfis</li>
-        <li>Lista de Materiais e Plano Otimizado de Corte de Barras</li>
-        <li style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 10px; color: #fde68a; font-weight: 700; margin: 8px 0;">
-          ⭐ <strong>BÔNUS #1:</strong> Planilha Inteligente de Precificação (Excel e Sheets)
-        </li>
-        <li style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 10px; color: #fde68a; font-weight: 700; margin: 8px 0;">
-          ⭐ <strong>BÔNUS #2:</strong> Guia Prático - Quanto Cobrar Sem Perder Serviço
-        </li>
-        <li>Acesso Vitalício: Para novos projetos</li>
-        <li>Lista de fornecedores</li>
-        <li>Envio imediato no seu e-mail logo após a confirmação</li>
-      </ul>
-
-      <a href="javascript:alert('Para configurar sua URL de pagamento, substitua pelo link da Hotmart, Kiwify, Eduzz ou Braip!');" class="cta-btn">
-        QUERO MEU ACESSO AGORA!
-      </a>
-      
-      <div style="margin-top: 15px; font-size: 12px; color: #94a3b8;">
-        🔒 Pagamento 100% Seguro &bull; PIX e Cartão de Crédito
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="display:inline-block; font-size:11px; font-weight:900; background:rgba(239,68,68,0.15); color:#f87171; padding:4px 14px; border-radius:999px; border:1px solid rgba(239,68,68,0.4); margin-bottom:12px; text-transform:uppercase;">
+        ⚡ ESCOLHA O PLANO IDEAL PARA SUA OFICINA
       </div>
+      <h2 class="section-title">INVISTA HOJE NA SUA SERRALHARIA</h2>
+      <p class="section-desc" style="max-width: 650px; margin: 0 auto;">
+        Comece com o Pacote Básico ou leve a biblioteca completa com todos os bônus e atualizações vitalícias.
+      </p>
+    </div>
+
+    <div class="pricing-container">
+      
+      <!-- 1. PACOTE BÁSICO - R$ 14,90 -->
+      <div class="pricing-box-basic">
+        <div>
+          <div style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; background: #0f172a; padding: 4px 10px; border-radius: 999px; display: inline-block; margin-bottom: 8px;">
+            Essencial para Iniciar
+          </div>
+          <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 6px; color: #ffffff;">Pacote Básico</h3>
+          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 16px;">
+            Ideal para quem quer começar rápido com os projetos essenciais em PDF.
+          </p>
+
+          <div style="background: #0f172a; padding: 16px; border-radius: 14px; border: 1px solid #1e293b; margin-bottom: 20px;">
+            <div class="old-price">De R$ 67,00</div>
+            <div style="font-size: 13px; color: #cbd5e1;">Por apenas</div>
+            <div class="new-price-basic">R$ 14,90</div>
+            <div style="font-size: 13px; color: #cbd5e1; font-weight: 600;">ou em até 2x no cartão</div>
+          </div>
+
+          <ul class="pricing-list">
+            <li>500 Projetos Essenciais em PDF prontos</li>
+            <li>Modelos mais pedidos de móveis industriais</li>
+            <li>Projetos de portões, grades e suportes simples</li>
+            <li>Medidas principais e especificações básicas</li>
+            <li>Envio imediato no seu e-mail</li>
+          </ul>
+        </div>
+
+        <div>
+          <a href="https://pay.wiapy.com/Cdhzimr-jDTJ" target="_blank" rel="noopener noreferrer" class="cta-btn-basic">
+            GARANTIR PACOTE BÁSICO (R$ 14,90)
+          </a>
+          <div style="margin-top: 10px; font-size: 11px; color: #94a3b8;">
+            🛡️ Garantia de 7 Dias &bull; Envio Imediato
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. PACOTE COMPLETO 2.0 - R$ 47,00 (DESTAQUE) -->
+      <div class="pricing-box">
+        <div class="pricing-badge-top">⭐ MAIS ESCOLHIDO • 70% OFF</div>
+
+        <div>
+          <div style="font-size: 12px; font-weight: 800; color: #d97706; text-transform: uppercase; margin-top: 6px;">Acesso Completo e Vitalício</div>
+          <h3 style="font-size: 26px; font-weight: 900; margin-bottom: 12px; color: #ffffff;">Pack Serralharia Lucrativa 2.0</h3>
+          
+          <div style="background: #0f172a; padding: 18px; border-radius: 14px; border: 1px solid #334155; margin-bottom: 20px;">
+            <div class="old-price">De R$ 197,00</div>
+            <div style="font-size: 14px; color: #cbd5e1;">Por apenas</div>
+            <div class="new-price">R$ 47,00</div>
+            <div class="installments">ou em até 5x de R$ 10,11 no cartão</div>
+            <div style="display:inline-block; font-size:11px; font-weight:800; color:#4ade80; background:rgba(34,197,94,0.15); padding:3px 10px; border-radius:999px;">
+              Economia de R$ 150,00 garantida hoje
+            </div>
+          </div>
+
+          <ul class="pricing-list">
+            <li><strong>+3000 Projetos Detalhados</strong> (PDF e CAD DWG)</li>
+            <li>600 projetos de móveis industriais</li>
+            <li>500 projetos de Estruturas rápidas</li>
+            <li>50 projetos de churrasqueiras</li>
+            <li>100 projetos de aparelho de academia (entre outros …)</li>
+            <li>Detalhamento de Medidas e Espessuras de Tubos e Perfis</li>
+            <li>Lista de Materiais e Plano Otimizado de Corte de Barras</li>
+            <li style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 10px; color: #fde68a; font-weight: 700; margin: 8px 0;">
+              ⭐ <strong>BÔNUS #1:</strong> Planilha Inteligente de Precificação (Excel e Sheets)
+            </li>
+            <li style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 8px; padding: 10px; color: #fde68a; font-weight: 700; margin: 8px 0;">
+              ⭐ <strong>BÔNUS #2:</strong> Guia Prático - Quanto Cobrar Sem Perder Serviço
+            </li>
+            <li>Acesso Vitalício: Para novos projetos</li>
+            <li>Lista de fornecedores</li>
+            <li>Envio imediato no seu e-mail logo após a confirmação</li>
+          </ul>
+        </div>
+
+        <div>
+          <a href="https://pay.wiapy.com/5gVNgI-UNci3" target="_blank" rel="noopener noreferrer" class="cta-btn">
+            QUERO MEU ACESSO AGORA!
+          </a>
+          
+          <div style="margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 12px; font-weight: 700;">
+            <span style="color: #22c55e;">🔒 Compra 100% Segura</span>
+            <span style="color: #d97706;">⚡ Acesso Imediato</span>
+            <span style="color: #38bdf8;">🛡️ Garantia de 7 Dias</span>
+          </div>
+          <div style="margin-top: 8px; font-size: 11px; color: #94a3b8;">
+            PIX Instantâneo &bull; Cartão em até 5x &bull; Ambiente Criptografado
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

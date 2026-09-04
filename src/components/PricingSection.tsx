@@ -95,15 +95,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onCtaClick }) =>
 
             <div>
               {/* Button Básico */}
-              <button
+              <a
                 id="cta-pacote-basico"
-                onClick={() => onCtaClick('basic')}
-                type="button"
-                className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-emerald-500 text-white font-bold text-sm sm:text-base py-3.5 px-4 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-95 shadow-md"
+                href="https://pay.wiapy.com/Cdhzimr-jDTJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-600 hover:border-emerald-500 text-white font-bold text-sm sm:text-base py-3.5 px-4 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-95 shadow-md text-center no-underline"
               >
                 <span>GARANTIR PACOTE BÁSICO (R$ 14,90)</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
 
               <div className="mt-3 text-center text-[11px] text-slate-400 flex items-center justify-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -206,18 +207,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onCtaClick }) =>
 
             <div>
               {/* Integrated Checkout CTA Button */}
-              <button
+              <a
                 id="checkout-cta-button"
-                onClick={() => onCtaClick('complete')}
-                type="button"
-                className="w-full relative group overflow-hidden bg-[#22c55e] hover:bg-[#16a34a] text-slate-950 font-black text-base sm:text-xl py-4 px-6 rounded-xl shadow-2xl shadow-emerald-500/30 transition-all duration-300 cursor-pointer animate-pulse-glow flex items-center justify-center gap-3 active:scale-95"
+                href="https://pay.wiapy.com/5gVNgI-UNci3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full relative group overflow-hidden bg-[#22c55e] hover:bg-[#16a34a] text-slate-950 font-black text-base sm:text-xl py-4 px-6 rounded-xl shadow-2xl shadow-emerald-500/30 transition-all duration-300 cursor-pointer animate-pulse-glow flex items-center justify-center gap-3 active:scale-95 text-center no-underline"
               >
                 <div className="absolute inset-0 w-1/2 h-full bg-white/25 skew-x-12 animate-shimmer pointer-events-none" />
                 <span className="tracking-wide uppercase drop-shadow-sm text-center">
                   QUERO MEU ACESSO AGORA!
                 </span>
                 <ArrowRight className="w-6 h-6 stroke-[3] group-hover:translate-x-1.5 transition-transform shrink-0" />
-              </button>
+              </a>
 
               {/* Payment Badges and Security */}
               <div className="mt-4 pt-4 border-t border-slate-700/60 flex flex-col items-center gap-2.5">
